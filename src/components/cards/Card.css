@@ -1,0 +1,23 @@
+.city-card{
+    background-color: #B7E4C7;
+    max-width: fit-content;
+    min-width: 24%;
+    border-radius: 20px;
+}
+
+.country{
+    color: white;
+    background-color: #073b3a;
+}
+
+.card-temp{
+    font-size: 40px;
+}
+
+.card-desc{
+    color: black;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 20px;
+    text-transform: uppercase;
+}
