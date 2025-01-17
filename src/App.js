@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import logo from "../src/images/logo.png";
 import "./App.css";
 import Card from "./components/cards/Card";
 import { FaGithub, FaSearch } from "react-icons/fa";
@@ -43,9 +42,45 @@ function App() {
   };
 
   useEffect(() => {
-    if (error) {
-      new Notification("Weather App Error", {
-        body: error.toUpperCase(),
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const tokenKey = "b4af3c12b165ff441f484f26ed738f8f";
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${tokenKey}&units=metric&lang=tr`;
+
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.cod !== "404") {
+              setError("");
+              setCards([data]);
+            } else {
+              setError(data.message);
+            }
+          })
+          .catch((err) => console.log(err));
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+
+    if ("Notification" in window) {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.ready.then((registration) => {
+          if (error) {
+        registration.showNotification("Weather App Error", {
+          body: error.toUpperCase(),
+        });
+          }
+        });
+      }
+      Notification.requestPermission().then((permission) => {
+        if (permission === "granted" && error) {
+          new Notification("Weather App Error", {
+            body: error.toUpperCase(),
+          });
+        }
       });
     }
   }, [error]);
@@ -85,7 +120,7 @@ function App() {
       <footer className="container d-flex justify-content-end align-items-center ">
         <div className="bg-light p-3 rounded d-flex justify-content-center align-items-center">
           <span className="footer-text">Created by</span>
-          <a href="#">
+          <a href="https://github.com/KemalDurukanMERT" target="_blank" rel="noreferrer">
             <FaGithub className="footer-icon text-dark ms-2 fs-1" />
           </a>
         </div>
