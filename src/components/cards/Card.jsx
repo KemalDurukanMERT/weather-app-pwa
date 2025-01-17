@@ -3,7 +3,7 @@ import "./Card.css"
 
 const Card = ({card}) => {
   return (
-    <div className='city-card col p-4'>
+    <div className='city-card col-sm-12 col-md-6 col-lg-4 p-4' style={{ minWidth: '250px' }}>
         <div className='d-flex gap-3'>
             <h1>{card?.name}</h1>
             <p className='country p-1 px-2 rounded'>{card?.sys?.country}</p>

@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../src/images/logo.png";
 import "./App.css";
 import Card from "./components/cards/Card";
+import { FaGithub, FaSearch } from "react-icons/fa";
 
 function App() {
   const [cards, setCards] = useState([]);
@@ -14,7 +15,7 @@ function App() {
     const tokenKey = "b4af3c12b165ff441f484f26ed738f8f";
 
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${place}&appid=${tokenKey}&units=metric&lang=tr`;
-    setPlace("")
+    setPlace("");
 
     try {
       fetch(url)
@@ -41,6 +42,14 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    if (error) {
+      new Notification("Weather App Error", {
+        body: error.toUpperCase(),
+      });
+    }
+  }, [error]);
+
   return (
     <main className="d-flex flex-column justify-content-center align-items-center pt-5 main">
       <header className="text-center my-3">
@@ -53,7 +62,7 @@ function App() {
           Weather App
         </h1>
       </header>
-      <form className="container" onSubmit={getWeather}>
+      <form className="container d-flex" onSubmit={getWeather}>
         <input
           type="text"
           placeholder="Search for a city"
@@ -61,25 +70,24 @@ function App() {
           value={place}
           onChange={(e) => setPlace(e.target.value)}
         />
-        <button className="search-button mx-3 px-4" type="submit">
-          SEARCH
+        <button className="search-button  px-3" type="submit">
+          <FaSearch />
         </button>
-        {
-          error && 
-          <div className="error">{error}</div>
-        }
       </form>
+      {error && <div className="error container px-3 text-start fs-6">{error.toUpperCase()}</div>}
       <section className="container mt-5">
-        <div className="cards row px-2">
+        <div className="cards row px-2  justify-content-center">
           {cards.map((card, index) => {
             return <Card card={card} key={index} />;
           })}
         </div>
       </section>
-      <footer className="container d-flex justify-content-end align-items-center w-75 gap-3">
-        <div className="bg-light p-3 rounded">
+      <footer className="container d-flex justify-content-end align-items-center ">
+        <div className="bg-light p-3 rounded d-flex justify-content-center align-items-center">
           <span className="footer-text">Created by</span>
-          <img src={logo} alt="logo" width={"100px"} />
+          <a href="#">
+            <FaGithub className="footer-icon text-dark ms-2 fs-1" />
+          </a>
         </div>
       </footer>
     </main>
