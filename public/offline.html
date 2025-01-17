@@ -6,6 +6,39 @@
     <title>PWA</title>
 </head>
 <body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('./images/weatherbg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        h1, p {
+            position: relative;
+            z-index: 2;
+            padding: 1rem;
+        }
+    </style>
     <h1>Offline Mode</h1>
     <p>In Order To Search the Weather Data, Connect the Internet!</p>
 </body>

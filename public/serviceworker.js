@@ -1,5 +1,5 @@
 const CACHE_NAME = "weather-app-cache-v1";
-const urlsToCache = ["index.html", "offline.html"];
+const urlsToCache = ["index.html", "offline.html", "/images/weatherbg.jpg"];
 
 const self = this;
 
