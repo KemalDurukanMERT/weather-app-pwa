@@ -46,7 +46,7 @@ function App() {
       (position) => {
         const { latitude, longitude } = position.coords;
         const tokenKey = "b4af3c12b165ff441f484f26ed738f8f";
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${tokenKey}&units=metric&lang=tr`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${tokenKey}&units=metric&lang=eng`;
 
         fetch(url)
           .then((res) => res.json())
@@ -121,6 +121,12 @@ function App() {
         <div className="bg-light p-3 rounded d-flex justify-content-center align-items-center">
           <span className="footer-text">Created by</span>
           <a href="https://github.com/KemalDurukanMERT" target="_blank" rel="noreferrer">
+            <FaGithub className="footer-icon text-dark ms-2 fs-1" />
+          </a>
+          <a href="https://github.com/sefaakkaya" target="_blank" rel="noreferrer">
+            <FaGithub className="footer-icon text-dark ms-2 fs-1" />
+          </a>
+          <a href="https://github.com/bahadirGln" target="_blank" rel="noreferrer">
             <FaGithub className="footer-icon text-dark ms-2 fs-1" />
           </a>
         </div>

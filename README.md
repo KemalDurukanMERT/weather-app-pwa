@@ -53,11 +53,7 @@ To create a production build, run:
 npm run build
 ```
 
-
-## Contributing
-
-Contributions are welcome! Please open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the MIT License.
+## Team Members
+Kemal Durukan Mert
+Sefa Akkaya
+Bahadir Gulen
