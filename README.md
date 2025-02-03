@@ -27,7 +27,7 @@ You can download the app on your mobile or web browser for offline use.
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/weather-app-pwa.git
+    git clone https://github.com/KemalDurukanMERT/weather-app-pwa
     ```
 2. Navigate to the project directory:
     ```sh
